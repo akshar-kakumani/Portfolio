@@ -1,0 +1,18 @@
+# _config.yml for GitHub Pages (static site)
+# Prevent Jekyll from processing files
+exclude:
+  - node_modules
+  - vendor
+  - README.md
+  - LICENSE
+  - .gitignore
+  - .gitattributes
+  - .github
+  - .vscode
+  - .idea
+  - .replit
+  - replit.nix
+  - .config
+
+# Set the baseurl to match your repository name
+baseurl: "/Portfolio" 
