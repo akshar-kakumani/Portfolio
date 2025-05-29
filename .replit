@@ -185,3 +185,15 @@ requiredFiles = [".replit", "replit.nix", ".config"]
 [deployment]
 deploymentTarget = "static"
 publicDir = "/"
+
+[workflows]
+runButton = "Run Portfolio"
+
+[[workflows.workflow]]
+name = "Run Portfolio"
+author = 43266182
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python -m http.server 5000"
