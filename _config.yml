@@ -15,4 +15,9 @@ exclude:
   - .config
 
 # Set the baseurl to match your repository name
-baseurl: "/Portfolio" 
+baseurl: "/Portfolio"
+
+# GitHub Pages theme and site info
+theme: jekyll-theme-minimal
+title: Akshar Kakumani's Portfolio
+description: Bookmark this to keep an eye on my project updates! 
