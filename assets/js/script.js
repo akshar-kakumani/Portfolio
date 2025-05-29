@@ -36,16 +36,22 @@ const testimonialsModalFunc = function () {
 }
 
 // add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-  testimonialsItem[i].addEventListener("click", function () {
-    if (modalImg && modalTitle && modalText) {
-      modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-      modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-      modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-      modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-    }
-    testimonialsModalFunc();
-  });
+if (testimonialsItem.length > 0) {
+  for (let i = 0; i < testimonialsItem.length; i++) {
+    testimonialsItem[i].addEventListener("click", function () {
+      const avatar = this.querySelector("[data-testimonials-avatar]");
+      const title = this.querySelector("[data-testimonials-title]");
+      const text = this.querySelector("[data-testimonials-text]");
+      
+      if (modalImg && modalTitle && modalText && avatar && title && text) {
+        modalImg.src = avatar.src;
+        modalImg.alt = avatar.alt;
+        modalTitle.innerHTML = title.innerHTML;
+        modalText.innerHTML = text.innerHTML;
+      }
+      testimonialsModalFunc();
+    });
+  }
 }
 
 // add click event to modal close button
@@ -67,17 +73,19 @@ if (select) {
 }
 
 // add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
-    if (selectValue) {
-      selectValue.innerText = this.innerText;
-    }
-    if (select) {
-      elementToggleFunc(select);
-    }
-    filterFunc(selectedValue);
-  });
+if (selectItems.length > 0) {
+  for (let i = 0; i < selectItems.length; i++) {
+    selectItems[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      if (selectValue) {
+        selectValue.innerText = this.innerText;
+      }
+      if (select) {
+        elementToggleFunc(select);
+      }
+      filterFunc(selectedValue);
+    });
+  }
 }
 
 // filter variables
@@ -96,22 +104,24 @@ const filterFunc = function (selectedValue) {
 }
 
 // add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+let lastClickedBtn = filterBtn.length > 0 ? filterBtn[0] : null;
 
-for (let i = 0; i < filterBtn.length; i++) {
-  filterBtn[i].addEventListener("click", function () {
-    let selectedValue = this.innerText.toLowerCase();
-    if (selectValue) {
-      selectValue.innerText = this.innerText;
-    }
-    filterFunc(selectedValue);
+if (filterBtn.length > 0) {
+  for (let i = 0; i < filterBtn.length; i++) {
+    filterBtn[i].addEventListener("click", function () {
+      let selectedValue = this.innerText.toLowerCase();
+      if (selectValue) {
+        selectValue.innerText = this.innerText;
+      }
+      filterFunc(selectedValue);
 
-    if (lastClickedBtn) {
-      lastClickedBtn.classList.remove("active");
-    }
-    this.classList.add("active");
-    lastClickedBtn = this;
-  });
+      if (lastClickedBtn) {
+        lastClickedBtn.classList.remove("active");
+      }
+      this.classList.add("active");
+      lastClickedBtn = this;
+    });
+  }
 }
 
 // contact form variables
@@ -120,19 +130,21 @@ const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
 // add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-    // check form validation
-    if (form && form.checkValidity()) {
-      if (formBtn) {
-        formBtn.removeAttribute("disabled");
+if (formInputs.length > 0) {
+  for (let i = 0; i < formInputs.length; i++) {
+    formInputs[i].addEventListener("input", function () {
+      // check form validation
+      if (form && form.checkValidity()) {
+        if (formBtn) {
+          formBtn.removeAttribute("disabled");
+        }
+      } else {
+        if (formBtn) {
+          formBtn.setAttribute("disabled", "");
+        }
       }
-    } else {
-      if (formBtn) {
-        formBtn.setAttribute("disabled", "");
-      }
-    }
-  });
+    });
+  }
 }
 
 // page navigation variables
