@@ -1,6 +1,9 @@
 
 'use strict';
 
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
@@ -151,3 +154,5 @@ for (let i = 0; i < navigationLinks.length; i++) {
     }
   });
 }
+
+}); // End DOMContentLoaded
